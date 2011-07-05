@@ -77,7 +77,7 @@ module Sinatra
         return source if source =~ /^\//
 
         file_extension = options[:extension] ? ".#{options[:extension]}" : ""
-        options[:folder] + "/" + source + file_extension
+        "/" + options[:folder] + "/" + source + file_extension
       end
 
       def source_url(source)
