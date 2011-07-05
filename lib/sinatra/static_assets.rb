@@ -14,7 +14,7 @@ module Sinatra
       # The default value of +closed+ option is +false+.
       #
       def image_tag(source, options = {})
-        options[:src] = source_url("/images/#{source}")
+        options[:src] = source_url(source_path(source, {:folder => 'images'}))
         tag("img", options)
       end
 
@@ -59,18 +59,25 @@ module Sinatra
       def stylesheet_tag(source, options = {})
         tag("link", { :type => "text/css",
             :charset => "utf-8", :media => "screen", :rel => "stylesheet",
-            :href => source_url("/stylesheets/#{source}.css") }.merge(options))
+            :href => source_url(source_path(source, {:folder => 'stylesheets', :extension => 'css'})) }.merge(options))
       end
 
       def javascript_tag(source, options = {})
         tag("script", { :type => "text/javascript", :charset => "utf-8",
-            :src => source_url("/javascripts/#{source}.js") }.merge(options)) do
+            :src => source_url(source_path(source, {:folder => 'javascripts', :extension => 'js'})) }.merge(options)) do
             end
       end
 
       def extract_options(a)
         opts = a.last.is_a?(::Hash) ? a.pop : {}
         [a, opts]  
+      end
+
+      def source_path(source, options)
+        return source if source =~ /^\//
+
+        extension = options[:extension] ? ".#{options[:extension]}" : ""
+        "/#{options[:folder]}/#{source}.#{extension}"
       end
 
       def source_url(source)
