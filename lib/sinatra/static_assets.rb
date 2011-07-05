@@ -14,7 +14,7 @@ module Sinatra
       # The default value of +closed+ option is +false+.
       #
       def image_tag(source, options = {})
-        options[:src] = source_url(source)
+        options[:src] = source_url("/images/#{source}")
         tag("img", options)
       end
 
@@ -59,12 +59,12 @@ module Sinatra
       def stylesheet_tag(source, options = {})
         tag("link", { :type => "text/css",
             :charset => "utf-8", :media => "screen", :rel => "stylesheet",
-            :href => source_url(source) }.merge(options))
+            :href => source_url("/stylesheets/#{source}.css") }.merge(options))
       end
 
       def javascript_tag(source, options = {})
         tag("script", { :type => "text/javascript", :charset => "utf-8",
-            :src => source_url(source) }.merge(options)) do
+            :src => source_url("/javascripts/#{source}.js") }.merge(options)) do
             end
       end
 
