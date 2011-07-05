@@ -75,7 +75,7 @@ module Sinatra
 
       def source_url(source)
         url_with_timestamp = source_url_timestamp url_for(source)
-        ENV['asset_host'] + url_with_timestamp if ENV['asset_host']
+        "#{ENV['asset_host']}#{url_with_timestamp}"
       end
 
       def source_url_timestamp(url)
