@@ -4,7 +4,7 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{sinatra-static-assets}
+  s.name = %q{r7-sinatra-static-assets}
   s.version = "0.5.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
@@ -69,7 +69,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/wbzyl/sinatra-static-assets}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubyforge_project = %q{sinatra-static-assets}
+  s.rubyforge_project = %q{r7-sinatra-static-assets}
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{Sinatra extension providing helper methods to output tags for static assetgemspec.}
   s.test_files = [
