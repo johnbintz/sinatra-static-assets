@@ -1,2 +1,2 @@
-
-gem "emk-sinatra-url-for"
+source "http://rubygems.org"
+gemspec
