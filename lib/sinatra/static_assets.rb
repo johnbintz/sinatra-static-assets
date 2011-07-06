@@ -51,7 +51,7 @@ module Sinatra
       def tag_options(options)
         unless options.empty?
           attrs = []
-          attrs = options.map { |key, value| %(#{key}="#{Rack::Utils.escape_html(value)}") }
+          attrs = options.map { |key, value| %(#{key}="#{value}") }
           " #{attrs.sort * ' '}" unless attrs.empty?
         end
       end
