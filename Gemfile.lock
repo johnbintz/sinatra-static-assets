@@ -11,6 +11,8 @@ GEM
   specs:
     emk-sinatra-url-for (0.2.1)
       sinatra (>= 0.9.1.1)
+    flexmock (0.9.0)
+    mocha (0.9.12)
     rack (1.3.0)
     rack-test (0.6.0)
       rack (>= 1.0)
@@ -23,5 +25,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  flexmock
+  mocha
   rack-test (>= 0.3.0)
   sinatra-static-assets!

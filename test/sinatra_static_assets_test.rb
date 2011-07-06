@@ -1,6 +1,8 @@
 require 'sinatra_app'
 require 'test/unit'
 require 'rack/test'
+require 'flexmock/test_unit'
+require 'mocha'
 
 set :environment, :test
 
@@ -53,5 +55,16 @@ EOD
 <a href="/bar/topr">Tatry Mountains Rescue Team</a>
 EOD
   end
-  
+
+  def test_tags_returns_time_stamp_when_file_exists
+    file_path = "#{Sinatra::Application.root}/public/bar/javascripts/summer.js"
+    File.expects(:"exists?").with(file_path).returns(true)
+    File.expects(:mtime).with(file_path).returns(123456789)
+
+    get '/javascript_script_tag', {}, 'SCRIPT_NAME' => '/bar'
+    assert last_response.ok?
+    assert_equal last_response.body,  <<EOD
+<script charset="iso-8859-2" src="/bar/javascripts/summer.js?123456789" type="text/javascript"></script>
+EOD
+  end
 end
