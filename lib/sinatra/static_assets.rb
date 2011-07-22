@@ -86,7 +86,7 @@ module Sinatra
       end
 
       def source_url_timestamp(url)
-        full_url = "#{Sinatra::Application.root}/public#{url}"
+        full_url = "#{settings.root}/public#{url}"
         if File.exists? full_url
           timestamp = File.mtime(full_url).to_i
           "#{url}?#{timestamp}"

@@ -57,7 +57,7 @@ EOD
   end
 
   def test_tags_returns_time_stamp_when_file_exists
-    file_path = "#{Sinatra::Application.root}/public/bar/javascripts/summer.js"
+    file_path = "#{app.settings.root}/public/bar/javascripts/summer.js"
     File.expects(:"exists?").with(file_path).returns(true)
     File.expects(:mtime).with(file_path).returns(123456789)
 
